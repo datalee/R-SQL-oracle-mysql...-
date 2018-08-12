@@ -1,0 +1,6 @@
+library(RMySQL)
+conn <- dbConnect(RMySQL::MySQL(), host = "192.168.3.232",dbname="caiji",user = "zwj", password = "123456")
+dbSendQuery(conn,'SET NAMES gbk')
+#读取热点事件
+org <- dbGetQuery(conn, "select * from TOP_SEARCHRESULT")
+
