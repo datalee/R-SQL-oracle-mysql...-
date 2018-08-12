@@ -1,0 +1,7 @@
+#使用insert语句写入，先将写入内容进行拼接
+strSQL <- paste(
+  'insert into TOP_HOTINDEX (CJMC, HOT_INDEX, CREATETIME) values',
+  paste(sprintf("('%s','%f','%s')", HOT_index$CJMC, HOT_index$HOT_INDEX, str_c(Sys.time())), collapse=', '),
+  sep = ' '
+)
+dbExecute(conn,strSQL)
