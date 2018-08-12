@@ -1,3 +1,3 @@
-# R-SQL-oracle-mysql...-
+# R-SQL-oracle-mysql
 
 demo
