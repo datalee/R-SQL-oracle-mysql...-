@@ -1,3 +1,4 @@
+library(mailR)
 #发送邮件的函数
 sendmail <- function(subject,body){
   send.mail(from = "xxx@qq.com",
