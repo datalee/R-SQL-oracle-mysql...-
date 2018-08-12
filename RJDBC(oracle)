@@ -1,0 +1,12 @@
+library(RJDBC)
+options(java.parameters='-Xmx4g')
+drv <- JDBC("oracle.jdbc.driver.OracleDriver",classPath = "D:/Program Files/ojdbc6.jar", identifier.quote=",")
+conn <- dbConnect(drv, "jdbc:oracle:thin:@192.168.3.218:1521:orcl",user= "sjcj",password= "sjcj")  
+org <- dbGetQuery(conn, "select t1.CJMC,BDXWNUM,BDTBNUM,WBNUM,WXNUM from (select CJMC,count(*) BDXWNUM from TOP_BDXWJG group by CJMC) t1 
+                                            left join (select CJMC,count(*) BDTBNUM from TOP_BDTBJG group by CJMC) t2 on t1.CJMC=t2.CJMC
+                                            left join (select CJMC,count(*) WBNUM from TOP_WEIBOJG group by CJMC) t3 on t1.CJMC=t3.CJMC
+                                            left join (select CJMC,count(*) WXNUM from TOP_WEIXINJG group by CJMC) t4 on t1.CJMC=t4.CJMC")
+
+
+TOP_JXRESULT <- dbGetQuery(conn,"select * from xxx")
+dbDisconnect(conn)
