@@ -1,0 +1,11 @@
+#发送邮件的函数
+sendmail <- function(subject,body){
+  send.mail(from = "xxx@qq.com",
+            to = "xxx@xxx.com",
+            subject = subject,
+            body = body,
+            smtp = list(host.name = "smtp.qq.com", port = 465, user.name = "xxx@qq.com", passwd = "xxx", ssl = TRUE),
+            authenticate = TRUE,
+            encoding = "utf-8",
+            send = TRUE)
+}
